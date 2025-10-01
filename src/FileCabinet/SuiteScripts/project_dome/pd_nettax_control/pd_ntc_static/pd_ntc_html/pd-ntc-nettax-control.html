@@ -1,0 +1,209 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h4>
+            <i class="fa fa-clipboard-list text-info"></i>
+            NetTax Control
+            <a href="/app/center/card.nl?sc=-29&whence=" class="btn btn-light btn-sm float-right">
+                <i class="fa fa-home text-info"></i>
+                Página Inicial
+            </a>
+        </h4>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-cogs text-muted"></i>
+                Controle
+            </div>
+            <div class="card-body" id="filters-container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h6>
+                            <i class="fa fa-building fa-fw text-muted"></i>
+                            Subsidiária
+                        </h6>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <input class="form-control form-control-sm autocomplete"
+                                        placeholder="Carregando subsidiárias..." id="subsidiary-selector"
+                                        data-restlet-script-id="customscript_pd_ntc_sub_handler_rl"
+                                        data-restlet-deployment-id="customdeploy_pd_ntc_sub_handler_rl"
+                                        data-placeholder="Digite o nome da subsidiária" data-autocomplete-max-items="15"
+                                        data-open-on-click="true" aria-autocomplete="none" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="row" id="subsidiary-data-container">
+                            <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="tax-regime" class="small text-muted mb-1">Regime Fiscal</label>
+                                <input type="text" id="tax-regime" class="form-control form-control-sm" readonly />
+                            </div>
+                            </div>
+                            <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="business-line" class="small text-muted mb-1">Linha de Negócio</label>
+                                <input type="text" id="business-line" class="form-control form-control-sm" readonly />
+                            </div>
+                            </div>
+                            <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="state" class="small text-muted mb-1">Estado</label>
+                                <input type="text" id="state" class="form-control form-control-sm" readonly />
+                            </div>
+                            </div>
+                            <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="city" class="small text-muted mb-1">Cidade</label>
+                                <input type="text" id="city" class="form-control form-control-sm" readonly />
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-sm-4"> 
+                        <div class="form-group">
+                            <h6>
+                                <i class="fa fa-building fa-fw text-muted"></i>
+                                Reconhecimento de Imposto Retido
+                            </h6>
+                            <hr/>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tax-type" id="payment-type" value="payment">
+                                <label class="form-check-label" for="payment-type">Payment</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tax-type" id="certification-type" value="certification">
+                                <label class="form-check-label" for="certification-type">Certification</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <h6>
+                                <i class="fa fa-building fa-fw text-muted"></i>
+                                Tipo de Regra
+                            </h6>
+                            <hr/>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rule-type" id="input-type" value="input">
+                                <label class="form-check-label" for="input-type">Entrada</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rule-type" id="output-type" value="output">
+                                <label class="form-check-label" for="output-type">Saída</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <h6>
+                                <i class="fa fa-building fa-fw text-muted"></i>
+                                Tipo de Item
+                            </h6>
+                            <hr/>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="item-type" id="product-type" value="product">
+                                <label class="form-check-label" for="product-type">Produto</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="item-type" id="service-type" value="service">
+                                <label class="form-check-label" for="service-type">Serviço</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4" id="provider-business-line-container" style="display:none;">
+                        <h6>
+                            <i class="fa fa-building fa-fw text-muted"></i>
+                            Linha de Negócio do Prestador
+                        </h6>
+                        <hr/>
+                        <div class="form-group">
+                            <input data-multi="true" class="form-control form-control-sm autocomplete" id="provider-business-line-selector"
+                                data-restlet-script-id="customscript_pd_ntc_bus_lines_handler_rl"
+                                data-restlet-deployment-id="customdeploy_pd_ntc_bus_lines_handler_rl" 
+                                data-placeholder="Selecione as Linhas de Negócio" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4" id="provider-state-container" style="display:none;">
+                        <div class="form-group">
+                            <h6>
+                                <i class="fa fa-building fa-fw text-muted"></i>
+                                Estados do Prestador
+                            </h6>
+                            <hr/>
+                            <input data-multi="true" class="form-control form-control-sm autocomplete" id="provider-state-selector"
+                                data-restlet-script-id="customscript_pd_ntc_state_handler_rl"
+                                data-restlet-deployment-id="customdeploy_pd_ntc_state_handler_rl"
+                                data-placeholder="Selecione os estados" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4" id="provider-city-container" style="display:none;">
+                        <div class="form-group">
+                            <h6>
+                                <i class="fa fa-building fa-fw text-muted"></i>
+                                Cidades do Prestador
+                            </h6>
+                            <hr/>
+                            <input data-multi="true" class="form-control form-control-sm autocomplete" id="provider-city-selector"
+                                data-restlet-script-id="customscript_pd_ntc_brhub_cit_handler_rl"
+                                data-restlet-deployment-id="customdeploy_pd_ntc_brhub_cit_handler_rl"
+                                data-placeholder="Selecione as cidades"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4" id="taker-business-line-container" style="display:none;">
+                        <div class="form-group">
+                            <h6>
+                                <i class="fa fa-building fa-fw text-muted"></i>
+                                Linha de Negócio do Tomador
+                            </h6>
+                            <hr/>
+                            <input data-multi="true" class="form-control form-control-sm autocomplete" id="taker-business-line-selector"
+                                data-restlet-script-id="customscript_pd_ntc_bus_lines_handler_rl"
+                                data-restlet-deployment-id="customdeploy_pd_ntc_bus_lines_handler_rl" 
+                                data-placeholder="Selecione as Linhas de Negócio" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4" id="taker-state-container" style="display:none;">
+                        <div class="form-group">
+                            <h6>
+                                <i class="fa fa-building fa-fw text-muted"></i>
+                                Estados do Tomador
+                            </h6>
+                            <hr/>
+                            <input data-multi="true" class="form-control form-control-sm autocomplete" id="taker-state-selector"
+                                data-restlet-script-id="customscript_pd_ntc_state_handler_rl"
+                                data-restlet-deployment-id="customdeploy_pd_ntc_state_handler_rl"
+                                data-placeholder="Selecione os estados" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-sm-12">
+                        <button type="button" class="btn btn-primary" onclick="executeTaxControl(this)">
+                            <i class="fa fa-search"></i>
+                            Ver nome para esse botão
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="clearFields(this)">
+                            <i class="fa fa-eraser"></i>
+                            Limpar Campos
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

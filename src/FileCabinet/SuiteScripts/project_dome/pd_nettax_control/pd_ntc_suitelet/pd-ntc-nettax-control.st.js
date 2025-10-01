@@ -1,12 +1,12 @@
 /**
  * @NApiVersion 2.1
  * @NScriptType Suitelet
- * @author Project Dome - {{titleCase devName}}
+ * @author Project Dome - Roque Costa
 */
 
 define(
     [
-        '../..//suitelet'
+        '../../pd_c_netsuite_tools/pd_cnt_standard/pd-cnts-suitelet.util.js'
     ],
     function (
         suitelet_util
@@ -20,7 +20,8 @@ define(
                         'pd-ntc-nettax-control.html'
                     ]),
                     js: ([
-                        'pd-ntc-nettax-control.js',
+                        'pd-ntc-nettax-control.main.js',
+                        'pd-ntc-nettax-control.ui.js'
                     ])
                 }
             });

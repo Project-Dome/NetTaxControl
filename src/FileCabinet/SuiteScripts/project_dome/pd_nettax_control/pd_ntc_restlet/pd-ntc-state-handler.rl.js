@@ -1,0 +1,35 @@
+/**
+ * @NApiVersion 2.1
+ * @NScriptType Restlet
+ * @author Project Dome - Roque Costa
+*/
+
+define(
+    [
+        '../pd_ntc_service/pd-ntc-state.service',
+
+        '../../pd_c_netsuite_tools/pd_cnt_standard/pd-cnts-restlet.util.js'
+    ],
+    function (
+        state_service,
+        
+        restlet_util
+    ) {
+
+        function getHandler(parameters) {
+            return restlet_util.api({
+                parameters: parameters,
+                method: 'GET',
+                handler: getData
+            });
+        }
+
+        function getData(parameters) {
+            return state_service.getAllStates(parameters);
+        };
+
+        return {
+            get: getHandler
+        }
+    }
+)
