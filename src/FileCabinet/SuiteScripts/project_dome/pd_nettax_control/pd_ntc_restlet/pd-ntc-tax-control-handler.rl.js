@@ -6,37 +6,30 @@
 
 define(
     [
-        '../pd_ntc_service/pd-ntc-subsidiary.service',
+        '../pd_ntc_api_service/pd-ntc-tax.api',
 
         '../../pd_c_netsuite_tools/pd_cnt_standard/pd-cnts-restlet.util.js'
     ],
     function (
-        subsidiary_service,
-        
+        tax_api_service,
+
         restlet_util
     ) {
 
-        function getHandler(parameters) {
+        function postHandler(data) {
             return restlet_util.api({
-                parameters: parameters,
-                method: 'GET',
-                handler: getData
+                data: data,
+                method: 'POST',
+                handler: sendTaxInfoToApi
             });
         }
 
-        function getData(parameters) {
-            let subsidiaryData;
-
-            if (parameters)
-                subsidiaryData = subsidiary_service.getSubsidiaries();
-            else 
-                subsidiaryData = subsidiary_service.getSubsidiaryById(parameters);
-
-            return subsidiaryData;
+        function sendTaxInfoToApi(data) {
+            return tax_api_service.sendTaxInfoToApi(data);
         };
 
         return {
-            get: getHandler
+            post: postHandler
         }
     }
 )

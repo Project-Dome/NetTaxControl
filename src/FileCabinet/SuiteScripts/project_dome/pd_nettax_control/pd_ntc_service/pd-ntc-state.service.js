@@ -6,9 +6,13 @@
 
 define(
     [
+        'N/log',
+
         '../../pd_c_netsuite_tools/pd_cnt_standard/pd-cnts-search.util.js'
     ],
     function (
+        log,
+         
         search_util
     ) {
 
@@ -19,10 +23,12 @@ define(
         };
 
         function getAllStates() {
-            return search_util.all({
+            const teste = search_util.all({
                 type: TYPE,
                 columns: FIELDS
             });
+            log.error('teste', teste);
+            return teste;
         }
 
         return {
