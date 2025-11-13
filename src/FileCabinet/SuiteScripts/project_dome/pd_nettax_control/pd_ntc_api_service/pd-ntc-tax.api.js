@@ -16,15 +16,17 @@ define(
 
         const BASE_URL = 'customrecord_ftebr_city';
 
-        function sendTaxInfoToApi() {
+        function sendTaxInfoToApi(data) {
             const postPath = 'v1/nettaxcontrol/taxrules';
-
+            const url = `${BASE_URL}/${postPath}`;
+            log.audit('sendTaxInfoToApi - request body', data.taxControlData);
+            log.audit('POST in URL', url);
             const response = https.post({
-                url: `${BASE_URL}/${postPath}`,
+                url: url,
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({data})
+                body: JSON.stringify(data.taxControlData)
             });
 
             if (response.code !== 200) {
